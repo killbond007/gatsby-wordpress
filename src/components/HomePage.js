@@ -51,7 +51,12 @@ const HomePage = props => {
                 marginBottom: rhythm(1 / 4),
               }}
             >
-              <Link to={`${postPrefix}/${node.slug}`}>{node.title}</Link>
+              <Link
+                style={{ boxShadow: `none` }}
+                to={`${postPrefix}/${node.slug}`}
+              >
+                {node.title}
+              </Link>
             </h3>
             <small>{node.date}</small>
             <p
