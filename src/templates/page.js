@@ -1,47 +1,62 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
+import gql from "graphql-tag"
+import { Query } from "react-apollo"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+
 import { rhythm } from "../utils/typography"
 
+const pageQuery = gql`
+  query($pageId: ID!) {
+    page(id: $pageId) {
+      id
+      slug
+      title
+      content
+      featuredImage {
+        sourceUrl
+      }
+    }
+  }
+`
+
 const PageTemplate = props => {
-  const post = props.data.wordpressPage
-  const siteTitle = props.data.site.siteMetadata.title
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            postPrefix
+          }
+        }
+      }
+    `
+  )
 
   return (
-    // eslint-disable-next-line react/jsx-filename-extension
-    <Layout location={props.location} title={siteTitle}>
-      <SEO title={post.title} description={post.excerpt} />
-      <h1>{post.title}11 </h1>
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
-      <hr
-        style={{
-          marginBottom: rhythm(1),
-        }}
-      />
-    </Layout>
+    <Query query={pageQuery} variables={{ pageId: props.pageContext.id }}>
+      {({ loading, error, data }) => {
+        if (loading) return "Loading page..."
+        if (error) return "Error loading page..."
+
+        return (
+          <Layout location={props.location} title={site.siteMetadata.title}>
+            <SEO title={data.page.title} description={data.page.excerpt} />
+            <h1>{data.page.title}</h1>
+            <div dangerouslySetInnerHTML={{ __html: data.page.content }} />
+            <hr
+              style={{
+                marginBottom: rhythm(1),
+              }}
+            />
+          </Layout>
+        )
+      }}
+    </Query>
   )
 }
 
 export default PageTemplate
-
-export const pageQuery = graphql`
-  query PageByID($id: String!) {
-    site {
-      siteMetadata {
-        title
-        author
-      }
-    }
-    wordpressPage(id: { eq: $id }) {
-      slug
-      title
-      id
-      # featured_media {
-      #   source_url
-      # }
-      content
-    }
-  }
-`

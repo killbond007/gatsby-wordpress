@@ -5,6 +5,7 @@
 </p>
 
 ### 👋 Looking for a way to support live previews with Gatsby + WordPress?
+
 [Check this repo out](https://github.com/justinwhall/wordpress-gatsby-preview-starter)!
 
 # Gatsby + Headless WordPress + Netlify Starter
@@ -13,15 +14,16 @@ A starter skeleton that leverages the WordPress API for [Gatsby](https://github.
 
 ## Dependencies
 
-* [WP Buildhook Deploy](https://github.com/justinwhall/littlebot-netlify) installed and activated on the source WordPress installation.
+- [WP Buildhook Deploy](https://github.com/justinwhall/littlebot-netlify) installed and activated on the source WordPress installation.
 
 #### This Project was forked from the default [Gatsby Starter](https://github.com/gatsbyjs/gatsby-starter-blog)
 
-
 ### [Production Demo](https://gatsby-wordpress-netlify-production.netlify.com/)
+
 ### [Stage Demo](https://gatsby-wordpress-netlify-stage.netlify.com/)
 
 ## Getting Started
+
 1. Fork Gatsby WordPress Netlify
 2. Clone your forked repository
 3. `npm install --global gatsby-cli` (if you don't have Gatsby CLI installed)
@@ -30,6 +32,7 @@ A starter skeleton that leverages the WordPress API for [Gatsby](https://github.
 6. Run `yarn develop` -- _not_ `gatsby develop`
 
 ### Netlify
+
 _Signup for a Netlify account if you don't already have one._
 
 1. Create a new site
@@ -45,13 +48,14 @@ _Signup for a Netlify account if you don't already have one._
 11. (Optional) Repeat the process above a second time to create a production environment. Change the DEPLOY_ENV to lbn_published_production Optionally rename accordingly.
 
 ### Install WordPress
-Install WordPress on the server of your choice or use an existing site. I recommend a stripped down theme with no front end like this. For example, this site uses [http://gatsbynetliflydemo.justinwhall.com/wp-json/](http://gatsbynetliflydemo.justinwhall.com/wp-json/) for its data source. which is no more than a stripped down _s theme.
+
+Install WordPress on the server of your choice or use an existing site. I recommend a stripped down theme with no front end like this. For example, this site uses [http://gatsbynetliflydemo.justinwhall.com/wp-json/](http://gatsbynetliflydemo.justinwhall.com/wp-json/) for its data source. which is no more than a stripped down \_s theme.
 
 ### Install WP Buildhook Deploy plugin (Optional. Can be used without this if you don't care about building on publish.)
 
 1. Download or clone the [WP Buildhook Deploy plugin](https://github.com/justinwhall/littlebot-netlify) and install on your source WordPress site.
 2. Find your build hooks on Netlify **Settings > Build & Deploy**
-3. Add build hooks to your WordPress install under **WP Admin > Settings > WP BuildHook Deploy** 
+3. Add build hooks to your WordPress install under **WP Admin > Settings > WP BuildHook Deploy**
 
 ### Publish!
 
@@ -84,10 +88,10 @@ Using this starter requires configuring the gatsby-config.js file. You really on
 },
 ```
 
-* Update GraphQL queries to match your WordPress Content. This is the query currently on the index page. You either need to add ACF's in your WordPress to match the query (in this case Project and Date), or you need to remove those aspects of the query. The featured_media isn't a problem -- it'll work even if you have posts without featured images.
+- Update GraphQL queries to match your WordPress Content. This is the query currently on the index page. You either need to add ACF's in your WordPress to match the query (in this case Project and Date), or you need to remove those aspects of the query. The featured_media isn't a problem -- it'll work even if you have posts without featured images.
 
 ```javascript
-allWordpressPost {
+wordpress {
       edges {
         node {
           featured_media {
@@ -123,5 +127,4 @@ allWordpressPost {
     }
 ```
 
-* Finally, you'll probably want to update the SiteConfig to match your info, because right now it has mine. 🤠
-
+- Finally, you'll probably want to update the SiteConfig to match your info, because right now it has mine. 🤠

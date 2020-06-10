@@ -8,49 +8,18 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-graphql",
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/assets`,
-        name: `assets`,
-      },
-    },
-    {
-      resolve: "gatsby-source-wordpress",
-      options: {
-        // The base url to your WP site.
-        baseUrl: "localhost:8888",
-        // baseUrl: 'data.justinwhall.com',
-        // baseUrl: 'wpgatsby.wtf',
-        // WP.com sites set to true, WP.org set to false
-        hostingWPCOM: false,
-        // The protocol. This can be http or https.
-        protocol: "http",
-        // Use 'Advanced Custom Fields' Wordpress plugin
-        useACF: false,
-        auth: {},
-        // Set to true to debug endpoints on 'gatsby build'
-        verboseOutput: true,
-        excludedRoutes: ["/*/*/comments", "/yoast/**", "/oembed/*"],
-        normalizer: function({ entities }) {
-          return entities
-        },
+        // Arbitrary name for the remote schema Query type
+        typeName: "Wordpress",
+        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
+        fieldName: "wordpress",
+        // Url to query from
+        url: "http://localhost:8888/graphql",
       },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
-      },
-    },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {

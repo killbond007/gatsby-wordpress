@@ -1,17 +1,12 @@
 {
-  "name": "gatsby-wordpress-netlify-starter",
-  "description": "A starter for a blog powered by Gatsby and Markdown",
-  "version": "2.0.0",
-  "author": "Justin W Hall",
+  "name": "gatsby-wordpress",
+  "description": "",
+  "version": "1.0.0",
+  "author": "chen",
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
   "main": "n/a",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:justinwhall/gatsby-wordpress-netlify-starter.git"
-  },
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",
@@ -20,11 +15,12 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
+    "apollo-boost": "^0.4.9",
+    "apollo-client": "^2.6.10",
     "gatsby": "^2.8.5",
     "gatsby-image": "^2.1.2",
     "gatsby-plugin-create-client-paths": "^2.3.3",
     "gatsby-plugin-feed": "^2.2.2",
-    "gatsby-plugin-google-analytics": "^2.0.20",
     "gatsby-plugin-manifest": "^2.1.1",
     "gatsby-plugin-offline": "^2.1.1",
     "gatsby-plugin-react-helmet": "^3.0.12",
@@ -35,13 +31,16 @@
     "gatsby-remark-prismjs": "^3.2.10",
     "gatsby-remark-responsive-iframe": "^2.1.1",
     "gatsby-remark-smartypants": "^2.0.9",
-    "gatsby-source-filesystem": "^2.0.38",
+    "gatsby-source-graphql": "^2.5.4",
     "gatsby-source-wordpress": "^3.0.64",
     "gatsby-transformer-remark": "^2.3.12",
     "gatsby-transformer-sharp": "^2.1.21",
+    "graphql-tag": "^2.10.3",
+    "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.11",
     "prismjs": "^1.16.0",
     "react": "^16.8.6",
+    "react-apollo": "^3.1.5",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-typography": "^0.16.19",
