@@ -10,11 +10,6 @@ module.exports = async ({ actions, graphql }) => {
   return graphql(
     `
       {
-        site {
-          siteMetadata {
-            pagePrefix
-          }
-        }
         wordpress {
           pages {
             edges {
@@ -33,13 +28,12 @@ module.exports = async ({ actions, graphql }) => {
       throw result.errors
     }
 
-    const { pagePrefix } = result.data.site.siteMetadata
     const { edges } = result.data.wordpress.pages
 
     edges.forEach(edge => {
       if (edge.node.status === "publish") {
         createPage({
-          path: `${pagePrefix}/${edge.node.slug}`,
+          path: `/${edge.node.slug}`,
           component: postTemplate,
           context: {
             id: edge.node.id,

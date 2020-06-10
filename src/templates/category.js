@@ -5,6 +5,8 @@ import { Query } from "react-apollo"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import AnimatedLoader from "../components/loader/AnimatedLoader"
+
 import { rhythm } from "../utils/typography"
 
 const categoryQuery = gql`
@@ -48,7 +50,7 @@ const CategoryTemplate = props => {
       variables={{ categoryId: props.pageContext.categoryId }}
     >
       {({ loading, error, data }) => {
-        if (loading) return "Loading post..."
+        if (loading) return <AnimatedLoader />
         if (error) return "Error loading post..."
 
         return (

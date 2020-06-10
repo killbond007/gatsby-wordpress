@@ -5,6 +5,7 @@ import { Query } from "react-apollo"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import AnimatedLoader from "../components/loader/AnimatedLoader"
 
 import { rhythm } from "../utils/typography"
 
@@ -39,7 +40,7 @@ const PageTemplate = props => {
   return (
     <Query query={pageQuery} variables={{ pageId: props.pageContext.id }}>
       {({ loading, error, data }) => {
-        if (loading) return "Loading page..."
+        if (loading) return <AnimatedLoader />
         if (error) return "Error loading page..."
 
         return (

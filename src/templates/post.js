@@ -7,6 +7,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import CommentForm from "../components/CommentForm"
 import CommentList from "../components/CommentList"
+import AnimatedLoader from "../components/loader/AnimatedLoader"
 
 import { rhythm } from "../utils/typography"
 
@@ -51,7 +52,7 @@ const PostTemplate = props => {
   return (
     <Query query={postQuery} variables={{ postId: props.pageContext.id }}>
       {({ loading, error, data }) => {
-        if (loading) return "Loading post..."
+        if (loading) return <AnimatedLoader />
         if (error) return "Error loading post..."
 
         return (

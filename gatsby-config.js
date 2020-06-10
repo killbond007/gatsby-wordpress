@@ -4,7 +4,6 @@ module.exports = {
     author: `chen`,
     description: `A Gatsby WordPress`,
     postPrefix: "/blog",
-    pagePrefix: "/",
   },
   plugins: [
     {
@@ -22,6 +21,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {

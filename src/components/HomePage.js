@@ -8,6 +8,7 @@ import { rhythm } from "../utils/typography"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Navbar from "../components/NavBar"
+import AnimatedLoader from "../components/loader/AnimatedLoader"
 
 const postsQuery = gql`
   query {
@@ -47,7 +48,7 @@ const HomePage = props => {
   return (
     <Query query={postsQuery}>
       {({ loading, error, data }) => {
-        if (loading) return "Loading posts..."
+        if (loading) return <AnimatedLoader />
         if (error) return "Error loading posts..."
 
         return (
