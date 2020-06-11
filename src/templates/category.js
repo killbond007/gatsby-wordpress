@@ -3,11 +3,9 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 import gql from "graphql-tag"
 import { Query } from "react-apollo"
 
-import Layout from "../components/layout"
+import Layout from "../components/layout/Layout"
 import SEO from "../components/seo"
 import AnimatedLoader from "../components/loader/AnimatedLoader"
-
-import { rhythm } from "../utils/typography"
 
 const categoryQuery = gql`
   query($categoryId: ID!) {
@@ -35,14 +33,13 @@ const CategoryTemplate = props => {
       query {
         site {
           siteMetadata {
-            title
             postPrefix
           }
         }
       }
     `
   )
-  const { title, postPrefix } = site.siteMetadata
+  const { postPrefix } = site.siteMetadata
 
   return (
     <Query
@@ -54,7 +51,7 @@ const CategoryTemplate = props => {
         if (error) return "Error loading post..."
 
         return (
-          <Layout location={props.location} title={title}>
+          <Layout>
             <SEO
               title={`Archive | ${props.pageContext.name}`}
               description={`Archive for ${props.pageContext.name} category`}
@@ -63,11 +60,7 @@ const CategoryTemplate = props => {
             {data.category.posts.edges.map(({ node }) => {
               return (
                 <div key={node.slug}>
-                  <h3
-                    style={{
-                      marginBottom: rhythm(1 / 4),
-                    }}
-                  >
+                  <h3>
                     <Link
                       style={{ boxShadow: `none` }}
                       to={`${postPrefix}/${node.slug}`}

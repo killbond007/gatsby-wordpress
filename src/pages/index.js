@@ -1,7 +1,7 @@
 import React from "react"
 import { Router } from "@reach/router"
 
-import HomePage from "../components/HomePage"
+import HomePage from "../modules/home/components/HomePage"
 // import DetailsPage from "../components/DetailsPage"
 // import LostPage from "../components/LostPage"
 

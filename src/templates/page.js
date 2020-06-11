@@ -3,11 +3,9 @@ import { graphql, useStaticQuery } from "gatsby"
 import gql from "graphql-tag"
 import { Query } from "react-apollo"
 
-import Layout from "../components/layout"
+import Layout from "../components/layout/Layout"
 import SEO from "../components/seo"
 import AnimatedLoader from "../components/loader/AnimatedLoader"
-
-import { rhythm } from "../utils/typography"
 
 const pageQuery = gql`
   query($pageId: ID!) {
@@ -48,11 +46,7 @@ const PageTemplate = props => {
             <SEO title={data.page.title} description={data.page.excerpt} />
             <h1>{data.page.title}</h1>
             <div dangerouslySetInnerHTML={{ __html: data.page.content }} />
-            <hr
-              style={{
-                marginBottom: rhythm(1),
-              }}
-            />
+            <hr />
           </Layout>
         )
       }}

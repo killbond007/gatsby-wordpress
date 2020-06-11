@@ -3,13 +3,17 @@ import Lottie from "react-lottie"
 
 import animationData from "./spinner.json"
 
-import * as Styled from "./__styles__/AnimatedLoader.styles"
+import { useStyles } from "./__styles__/AnimatedLoader.styles"
 
-const AnimatedLoader = props => (
-  <Styled.Root>
-    <Lottie {...props} />
-  </Styled.Root>
-)
+const AnimatedLoader = props => {
+  const classes = useStyles()
+
+  return (
+    <div className={classes.root}>
+      <Lottie {...props} />
+    </div>
+  )
+}
 
 AnimatedLoader.propTypes = {
   ...Lottie.propTypes,
